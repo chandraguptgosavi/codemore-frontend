@@ -2,7 +2,8 @@ const Paths = {
   HOME: "/",
   SIGNUP: "/signup",
   SIGNIN: "/signin",
-  PROFILE: "/profile/:username",
+  PROFILE: "/profile",
+  SOLVE: "/solve"
 };
 
 export default Paths;

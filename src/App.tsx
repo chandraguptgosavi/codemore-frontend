@@ -41,16 +41,24 @@ function App() {
             <Route
               path={Paths.HOME}
               element={
-                // <PrivateRoute>
+                <PrivateRoute>
                   <Home />
-                // </PrivateRoute>
+                </PrivateRoute>
               }
             />
             <Route
-              path={Paths.PROFILE}
+              path={`${Paths.SOLVE}/:_id`}
               element={
                 <PrivateRoute>
-                  <Home />
+                  <>problem</>
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path={`${Paths.PROFILE}/:username`}
+              element={
+                <PrivateRoute>
+                  <>profile</>
                 </PrivateRoute>
               }
             />
