@@ -12,10 +12,10 @@ const signUp = async (authData: AuthData) => {
     }
     return user;
   } catch (error: any) {
-    if (error.response) {
-      throw new Error(error.response.data.message);
-    }
-    throw new Error(error);
+     if (error.response && error.response.data && error.response.data.message) {
+       throw new Error(error.response.data.message);
+     }
+     throw new Error(error.message);
   }
 };
 
@@ -27,10 +27,10 @@ const signIn = async (authData: AuthData) => {
     }
     return user;
   } catch (error: any) {
-    if (error.response) {
-      throw new Error(error.response.data.message);
-    }
-    throw new Error(error);
+     if (error.response && error.response.data && error.response.data.message) {
+       throw new Error(error.response.data.message);
+     }
+     throw new Error(error.message);
   }
 };
 

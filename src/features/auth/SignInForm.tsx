@@ -6,7 +6,7 @@ import { LoadingButton } from "@mui/lab";
 import StyledForm from "components/form/Form.styles";
 import StyledFormItem from "components/form/FormItem.styles";
 import useReduxDispatch from "hooks/useReduxDispatch";
-import { selectAuthError, selectIsAuthLoading, signIn } from "./authSlice";
+import { resetAuthState, selectAuthError, selectIsAuthLoading, signIn } from "./authSlice";
 import Paths from "router/paths";
 import StyledLink from "components/Link.styles";
 import useReduxSelector from "hooks/useReduxSelector";
@@ -103,6 +103,7 @@ function SignInForm() {
         show={authError !== null}
         severity="error"
         message={authError!!}
+        onClose={()=> dispatch(resetAuthState())}
       />
     </StyledForm>
   );

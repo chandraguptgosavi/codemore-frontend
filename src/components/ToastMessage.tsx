@@ -1,20 +1,18 @@
 import { Alert, Snackbar, AlertColor } from "@mui/material";
-import { reset } from "features/auth/authSlice";
-import useReduxDispatch from "hooks/useReduxDispatch";
 
 type ToastMessageProps = {
   show: boolean;
   severity: AlertColor;
   message: string;
+  onClose: () => void;
 };
 
 function ToastMessage({
   show = false,
   severity,
   message,
+  onClose,
 }: ToastMessageProps) {
-  const dispatch = useReduxDispatch();
-
   const handleClose = (
     event?: React.SyntheticEvent | Event,
     reason?: string
@@ -22,7 +20,7 @@ function ToastMessage({
     if (reason === "clickaway") {
       return;
     }
-    dispatch(reset());
+    onClose();
   };
   return (
     <Snackbar

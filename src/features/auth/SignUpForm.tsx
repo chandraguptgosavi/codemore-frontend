@@ -6,7 +6,7 @@ import { LoadingButton } from "@mui/lab";
 import StyledForm from "components/form/Form.styles";
 import StyledFormItem from "components/form/FormItem.styles";
 import useReduxDispatch from "hooks/useReduxDispatch";
-import { selectAuthError, selectIsAuthLoading, signUp } from "./authSlice";
+import { resetAuthState, selectAuthError, selectIsAuthLoading, signUp } from "./authSlice";
 import Paths from "router/paths";
 import useReduxSelector from "hooks/useReduxSelector";
 import StyledLink from "components/Link.styles";
@@ -103,7 +103,7 @@ function SignUpForm() {
         <TextField
           label="Password"
           variant="outlined"
-          type='password'
+          type="password"
           onChange={onPasswordChange}
           value={password}
           error={passwordError.length > 0}
@@ -133,6 +133,7 @@ function SignUpForm() {
         show={authError !== null}
         severity="error"
         message={authError!!}
+        onClose={() => dispatch(resetAuthState())}
       />
     </StyledForm>
   );
