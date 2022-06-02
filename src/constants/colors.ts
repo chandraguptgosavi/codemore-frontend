@@ -8,6 +8,7 @@ const Color = {
   TEXT: "#ffffff",
   TEXT_ON_LIGHT: "#000000",
   ERROR: "#B00020",
+  LIGHT: "#e6e6e3",
 };
 
 export default Color;
