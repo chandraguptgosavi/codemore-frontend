@@ -1,25 +1,63 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+import PublicRoute from "router/PublicRoute";
+import Paths from "router/paths";
+import Header from "components/header/Header";
+import useReduxSelector from "hooks/useReduxSelector";
+import { selectUser } from "features/auth/authSlice";
+import StyledRouteContainer from "components/RouteContainer.styles";
+import StyledMainContainer from "components/MainContainer.styles";
+import SignIn from "pages/SignIn";
+import SignUp from "pages/SignUp";
+import PrivateRoute from "router/PrivateRoute";
+import Home from "pages/Home";
 
 function App() {
+  const user = useReduxSelector(selectUser);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <StyledMainContainer>
+        <Header user={user} />
+        <StyledRouteContainer>
+          <Routes>
+            <Route
+              path={Paths.SIGNUP}
+              element={
+                <PublicRoute>
+                  <SignUp />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path={Paths.SIGNIN}
+              element={
+                <PublicRoute>
+                  <SignIn />
+                </PublicRoute>
+              }
+            />
+            <Route
+              path={Paths.HOME}
+              element={
+                // <PrivateRoute>
+                  <Home />
+                // </PrivateRoute>
+              }
+            />
+            <Route
+              path={Paths.PROFILE}
+              element={
+                <PrivateRoute>
+                  <Home />
+                </PrivateRoute>
+              }
+            />
+          </Routes>
+        </StyledRouteContainer>
+      </StyledMainContainer>
+    </BrowserRouter>
   );
 }
 
