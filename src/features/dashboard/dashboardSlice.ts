@@ -17,7 +17,7 @@ const initialState: DashboardState = {
 };
 
 export const getAllProblems = createAsyncThunk(
-  "auth/signUp",
+  "dashboard/getAllProblems",
   async (page: number, thunkAPI) => {
     try {
       return await dashboardService.getAllProblems(page);
