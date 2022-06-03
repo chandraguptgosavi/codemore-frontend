@@ -29,9 +29,7 @@ function ProblemsList() {
       navigate(`${Paths.SOLVE}/${_id}`);
     };
 
-  useEffect(() => {
-    console.log(page);
-    
+  useEffect(() => {    
     dispatch(getAllProblems(page));
   }, [page]);
 
