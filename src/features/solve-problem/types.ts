@@ -11,6 +11,7 @@ export type SolveProblemState = {
 
 export type SubmissionData = {
   _id: string;
+  problemTitle: string;
   srcCode: string;
   langID: number;
 };

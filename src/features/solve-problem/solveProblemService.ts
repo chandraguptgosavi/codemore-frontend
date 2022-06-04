@@ -31,7 +31,7 @@ const submitProblem = async (submissionData: SubmissionData, token: string) => {
         submissionData,
         config
       )
-    ).data;    
+    ).data;
     return data;
   } catch (error: any) {
     if (error.response && error.response.data && error.response.data.message) {

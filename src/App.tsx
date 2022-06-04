@@ -56,11 +56,10 @@ function App() {
               }
             />
             <Route
-              path={`${Paths.PROFILE}/:username`}
+              path={`${Paths.SUBMISSIONS}/:username`}
               element={
-                <PrivateRoute>
+                
                   <>profile</>
-                </PrivateRoute>
               }
             />
           </Routes>

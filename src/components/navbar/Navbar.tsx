@@ -8,8 +8,9 @@ import StyledNavbarItem from "./NavbarItem.styles";
 import styled from "styled-components";
 import Color from "constants/colors";
 import useReduxDispatch from "hooks/useReduxDispatch";
-import { signOut } from "features/auth/authSlice";
+import { selectUser, signOut } from "features/auth/authSlice";
 import Unit from "constants/units";
+import useReduxSelector from "hooks/useReduxSelector";
 
 type NavbarProps = {
   show?: boolean;
@@ -25,6 +26,7 @@ const SignOutButton = styled.button`
 
 function Navbar(props: NavbarProps) {
   const show = props.show;
+  const user = useReduxSelector(selectUser);
   const dispatch = useReduxDispatch();
 
   const onSignOutClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -48,7 +50,7 @@ function Navbar(props: NavbarProps) {
             <StyledLink to={Paths.HOME}>Problems</StyledLink>
           </StyledNavbarItem>
           <StyledNavbarItem show={show}>
-            <StyledLink to={Paths.PROFILE}>My Profile</StyledLink>
+            <StyledLink to={`${Paths.SUBMISSIONS}/${user?.username}`}>My Submissions</StyledLink>
           </StyledNavbarItem>
           <StyledNavbarItem show={show}>
             <SignOutButton onClick={onSignOutClick}>Sign out</SignOutButton>

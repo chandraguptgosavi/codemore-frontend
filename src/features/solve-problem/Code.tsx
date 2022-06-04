@@ -92,7 +92,7 @@ function Code() {
   const [srcCode, setSrcCode] = useState<string | undefined>("");
   const [selectedLanguageIndex, setSelectedLanguageIndex] = useState<number>(0);
   const [openConsole, setOpenConsole] = useState(false);
-  const { isSubmissionPending, error, submissionResponse } = useReduxSelector(
+  const { problem, isSubmissionPending, error, submissionResponse } = useReduxSelector(
     (state) => state.solveProblem
   );
   const { _id } = useParams();
@@ -111,11 +111,12 @@ function Code() {
   };
 
   const onSubmit = (_: React.MouseEvent<HTMLButtonElement>) => {
-    if (_id !== undefined && srcCode !== undefined) {
+    if (_id !== undefined && srcCode !== undefined && problem !== null) {
       dispatch(
         submitProblem({
           _id,
           srcCode,
+          problemTitle: problem.title,
           langID: languages[selectedLanguageIndex].id,
         })
       );
