@@ -13,12 +13,10 @@ import useReduxSelector from "hooks/useReduxSelector";
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Paths from "router/paths";
-import {
-  getAllProblems, resetDashboardState,
-} from "./dashboardSlice";
+import { getAllProblems, resetDashboardState } from "./dashboardSlice";
 
 function ProblemsList() {
-  const { page, error, isLoading, problems } = useReduxSelector(
+  const { page, pageSize, error, isLoading, problems } = useReduxSelector(
     (state) => state.dashboard
   );
   const dispatch = useReduxDispatch();
@@ -29,7 +27,7 @@ function ProblemsList() {
       navigate(`${Paths.SOLVE}/${_id}`);
     };
 
-  useEffect(() => {    
+  useEffect(() => {
     dispatch(getAllProblems(page));
   }, [page]);
 
@@ -50,7 +48,7 @@ function ProblemsList() {
             >
               <ListItemButton>
                 <ListItemText sx={{ flex: "none", width: Unit.rem.XXL }}>
-                  {`${page * (index + 1)}.`}
+                  {`${(page - 1) * pageSize + (index + 1)}.`}
                 </ListItemText>
                 <ListItemText primary={problem.title} />
               </ListItemButton>

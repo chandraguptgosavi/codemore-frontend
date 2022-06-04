@@ -1,14 +1,17 @@
 import { Pagination } from "@mui/material";
 import useReduxDispatch from "hooks/useReduxDispatch";
 import useReduxSelector from "hooks/useReduxSelector";
-import { selectPage, selectTotalProblems, setPage } from "./dashboardSlice";
+import { selectPage, selectPageSize, selectTotalProblems, setPage } from "./dashboardSlice";
 
 function ProblemsPagination() {
+  const size = useReduxSelector(selectPageSize);
   const page = useReduxSelector(selectPage);
   const totalProblems = useReduxSelector(selectTotalProblems);
   const dispatch = useReduxDispatch();
   const pageCount =
-    totalProblems % 5 === 0 ? totalProblems / 5 : totalProblems / 5 + 1;
+    totalProblems % size === 0
+      ? Math.floor(totalProblems / size)
+      : Math.floor(totalProblems / size) + 1;
 
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
     dispatch(setPage(value));

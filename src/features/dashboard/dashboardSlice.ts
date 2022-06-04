@@ -10,6 +10,7 @@ import { DashboardState, GetAllProblemsResponse } from "./types";
 
 const initialState: DashboardState = {
   page: 1,
+  pageSize: 5,
   totalProblems: 0,
   isLoading: false,
   error: null,
@@ -69,6 +70,7 @@ export const { resetDashboardState, setPage } = dashboardSlice.actions;
 
 export const selectProblems = (state: RootState) => state.dashboard.problems;
 export const selectTotalProblems = (state: RootState) => state.dashboard.totalProblems;
+export const selectPageSize = (state: RootState) => state.dashboard.pageSize;
 export const selectPage = (state: RootState) => state.dashboard.page;
 export const selectIsDashboardLoading = (state: RootState) =>
   state.dashboard.isLoading;
