@@ -2,14 +2,14 @@ import { Alert, Snackbar, AlertColor } from "@mui/material";
 
 type ToastMessageProps = {
   show: boolean;
-  severity: AlertColor;
+  severity?: AlertColor;
   message: string;
   onClose: () => void;
 };
 
 function ToastMessage({
   show = false,
-  severity,
+  severity = "error",
   message,
   onClose,
 }: ToastMessageProps) {

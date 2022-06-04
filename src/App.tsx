@@ -12,6 +12,7 @@ import SignIn from "pages/SignIn";
 import SignUp from "pages/SignUp";
 import PrivateRoute from "router/PrivateRoute";
 import Home from "pages/Home";
+import SolveProblem from "pages/SolveProblem";
 
 function App() {
   const user = useReduxSelector(selectUser);
@@ -50,7 +51,7 @@ function App() {
               path={`${Paths.SOLVE}/:_id`}
               element={
                 <PrivateRoute>
-                  <>problem</>
+                  <SolveProblem />
                 </PrivateRoute>
               }
             />

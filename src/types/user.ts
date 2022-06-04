@@ -1,7 +1,7 @@
 import UserProblem from "./userProblem";
 
 type User = {
-  _id: string;
+  token: string;
   username: string;
   email: string;
   problems: UserProblem[];

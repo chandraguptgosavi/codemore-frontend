@@ -1,0 +1,32 @@
+  write your code
+ #include <bits/stdc++.h>
+ using namespace std;
+
+ void twoSum(vector<int>& nums, int target) {
+         map<int, int> numMap;
+         vector<int> ans;
+         for(int i = 0; i < nums.size(); i++){
+             int num = nums[i];
+             if (numMap.count(target - num) == 1){  
+                 ans.push_back(numMap[target - num]);
+                 ans.push_back(i);
+             }
+             numMap[num] = i;
+         }
+         return ans;
+     }
+
+
+ int main(){
+     int t;
+     cin >> t;
+     while(t--){
+         int target, N;
+         vector<int> nums(N);
+         for(int i= 0; i < N; i++){
+             cin >> nums[i];
+
+         }
+         twoSum(nums, target);
+     }
+ }

@@ -4,6 +4,7 @@ import Color from "constants/colors";
 
 const StyledHeader = styled.header`
   width: 100%;
+  height: 8%;
   display: flex;
   align-items: center;
   justify-content: center;

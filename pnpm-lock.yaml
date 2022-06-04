@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@emotion/react': ^11.9.0
   '@emotion/styled': ^11.8.1
+  '@monaco-editor/react': ^4.4.5
   '@mui/lab': 5.0.0-alpha.84
   '@mui/material': ^5.8.2
   '@reduxjs/toolkit': ^1.8.2
@@ -16,6 +17,7 @@ specifiers:
   '@types/styled-components': ^5.1.25
   '@types/validator': ^13.7.2
   axios: ^0.27.2
+  re-resizable: ^6.9.9
   react: ^18.1.0
   react-dom: ^18.1.0
   react-icons: ^4.4.0
@@ -30,6 +32,7 @@ specifiers:
 dependencies:
   '@emotion/react': 11.9.0_7cpxmzzodpxnolj5zcc5cr63ji
   '@emotion/styled': 11.8.1_ycz2ostpb5cpb2s3izz5qyhrbm
+  '@monaco-editor/react': 4.4.5_ef5jwxihqo6n7gxfmzogljlgcm
   '@mui/lab': 5.0.0-alpha.84_d2dhbfh5mx32wgzn672opu26ku
   '@mui/material': 5.8.2_4xriuibr7qayay6mzcpq5f43me
   '@reduxjs/toolkit': 1.8.2_ctm756ikdwcjcvyfxxwskzbr6q
@@ -43,6 +46,7 @@ dependencies:
   '@types/styled-components': 5.1.25
   '@types/validator': 13.7.2
   axios: 0.27.2
+  re-resizable: 6.9.9_ef5jwxihqo6n7gxfmzogljlgcm
   react: 18.1.0
   react-dom: 18.1.0_react@18.1.0
   react-icons: 4.4.0_react@18.1.0
@@ -2083,6 +2087,27 @@ packages:
 
   /@leichtgewicht/ip-codec/2.0.4:
     resolution: {integrity: sha512-Hcv+nVC0kZnQ3tD9GVu5xSMR4VVYOteQIr/hwFPVEvPdlXqgGEuRjiheChHgdM+JyqdgNcmzZOX/tnl0JOiI7A==}
+    dev: false
+
+  /@monaco-editor/loader/1.3.2:
+    resolution: {integrity: sha512-BTDbpHl3e47r3AAtpfVFTlAi7WXv4UQ/xZmz8atKl4q7epQV5e7+JbigFDViWF71VBi4IIBdcWP57Hj+OWuc9g==}
+    peerDependencies:
+      monaco-editor: '>= 0.21.0 < 1'
+    dependencies:
+      state-local: 1.0.7
+    dev: false
+
+  /@monaco-editor/react/4.4.5_ef5jwxihqo6n7gxfmzogljlgcm:
+    resolution: {integrity: sha512-IImtzU7sRc66OOaQVCG+5PFHkSWnnhrUWGBuH6zNmH2h0YgmAhcjHZQc/6MY9JWEbUtVF1WPBMJ9u1XuFbRrVA==}
+    peerDependencies:
+      monaco-editor: '>= 0.25.0 < 1'
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
+    dependencies:
+      '@monaco-editor/loader': 1.3.2
+      prop-types: 15.8.1
+      react: 18.1.0
+      react-dom: 18.1.0_react@18.1.0
     dev: false
 
   /@mui/base/5.0.0-alpha.83_ohobp6rpsmerwlq5ipwfh5yigy:
@@ -8539,6 +8564,16 @@ packages:
       unpipe: 1.0.0
     dev: false
 
+  /re-resizable/6.9.9_ef5jwxihqo6n7gxfmzogljlgcm:
+    resolution: {integrity: sha512-l+MBlKZffv/SicxDySKEEh42hR6m5bAHfNu3Tvxks2c4Ah+ldnWjfnVRwxo/nxF27SsUsxDS0raAzFuJNKABXA==}
+    peerDependencies:
+      react: ^16.13.1 || ^17.0.0 || ^18.0.0
+      react-dom: ^16.13.1 || ^17.0.0 || ^18.0.0
+    dependencies:
+      react: 18.1.0
+      react-dom: 18.1.0_react@18.1.0
+    dev: false
+
   /react-app-polyfill/3.0.0:
     resolution: {integrity: sha512-sZ41cxiU5llIB003yxxQBYrARBqe0repqPTTYBTmMqTz9szeBbE37BehCE891NZsmdZqqP+xWKdT3eo3vOzN8w==}
     engines: {node: '>=14'}
@@ -9407,6 +9442,10 @@ packages:
 
   /stackframe/1.2.1:
     resolution: {integrity: sha512-h88QkzREN/hy8eRdyNhhsO7RSJ5oyTqxxmmn0dzBIMUclZsjpfmrsg81vp8mjjAs2vAZ72nyWxRUwSwmh0e4xg==}
+    dev: false
+
+  /state-local/1.0.7:
+    resolution: {integrity: sha512-HTEHMNieakEnoe33shBYcZ7NX83ACUjCu8c40iOGEZsngj9zRnkqS9j1pqQPXwobB0ZcVTk27REb7COQ0UR59w==}
     dev: false
 
   /statuses/1.5.0:
