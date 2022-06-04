@@ -5,15 +5,9 @@ import {
   PayloadAction,
 } from "@reduxjs/toolkit";
 import { RootState } from "redux/store";
-import AuthData from "types/authData";
+import { AuthData, AuthState } from "./types";
 import User from "types/user";
 import authService from "./authService";
-
-type AuthState = {
-  isLoading: boolean;
-  error: string | null;
-  user: User | null;
-};
 
 // Get user from localStorage
 const jsonUser: string | null = localStorage.getItem("user");

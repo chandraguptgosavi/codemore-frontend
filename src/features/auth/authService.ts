@@ -1,5 +1,5 @@
 import axios from "axios";
-import AuthData from "types/authData";
+import {AuthData} from "./types";
 import User from "types/user";
 
 const BASE_URL = "http://localhost:5000/user";
