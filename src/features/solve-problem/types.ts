@@ -2,27 +2,41 @@ import Problem from "types/problem";
 import SubmissionStatus from "types/submissionStatus";
 
 export type SolveProblemState = {
+  _id: string | null;
+  language: Language;
   isProblemLoading: boolean;
-  error: string | null;
+  problemError: string | null;
   problem: Problem | null;
+  srcCode: string;
+  openConsole: boolean;
+  consoleTabIndex: number;
   isSubmissionPending: boolean;
-  submissionResponse: SubmissionResponse | null;
+  submissionError: string | null;
+  submissionResponse: JudgeResponse | null;
+  runCodeError: string | null;
+  isCodeRunning: boolean;
+  userInput: string;
+  runCodeResponse: JudgeResponse | null;
 };
 
 export type SubmissionData = {
   _id: string;
-  problemTitle: string;
-  srcCode: string;
   langID: number;
 };
 
-export type SubmissionResponse = {
+export type JudgeResponse = {
   stdout: string | null;
   time: string | null;
   memory: string | null;
   stderr: string | null;
   token: string;
-  compiler_output: string | null;
+  compile_output: string | null;
   message: string | null;
   status: SubmissionStatus;
+};
+
+export type Language = { name: string; selectedIndex: number };
+
+export type RunCodeData = {
+  langID: number;
 };

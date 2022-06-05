@@ -1,6 +1,6 @@
 import axios from "axios";
 import Problem from "types/problem";
-import { SubmissionData, SubmissionResponse } from "./types";
+import { JudgeResponse } from "./types";
 
 const BASE_URL = "http://localhost:5000/problems";
 
@@ -18,7 +18,13 @@ const getProblem = async (_id: string) => {
   }
 };
 
-const submitProblem = async (submissionData: SubmissionData, token: string) => {
+const submitProblem = async (
+  _id: string,
+  srcCode: string,
+  langID: number,
+  problemTitle: string,
+  token: string
+) => {
   try {
     const config = {
       headers: {
@@ -26,14 +32,42 @@ const submitProblem = async (submissionData: SubmissionData, token: string) => {
       },
     };
     const data = (
-      await axios.put<SubmissionResponse>(
-        `${BASE_URL}/${submissionData._id}/submit`,
-        submissionData,
+      await axios.put<JudgeResponse>(
+        `${BASE_URL}/${_id}/submit`,
+        { srcCode, langID, problemTitle },
         config
       )
-    ).data;
+    ).data;    
     return data;
   } catch (error: any) {
+    if (error.response && error.response.data && error.response.data.message) {
+      throw new Error(error.response.data.message);
+    }
+    throw new Error(error.message);
+  }
+};
+
+const runCode = async (
+  srcCode: string,
+  langID: number,
+  userInput: string,
+  token: string
+) => {
+  try {
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };    
+    const data = (
+      await axios.post<JudgeResponse>(
+        `${BASE_URL}/run`,
+        { srcCode, langID, userInput },
+        config
+      )
+    ).data;    
+    return data;
+  } catch (error: any) {    
     if (error.response && error.response.data && error.response.data.message) {
       throw new Error(error.response.data.message);
     }
@@ -44,6 +78,7 @@ const submitProblem = async (submissionData: SubmissionData, token: string) => {
 const dashboardService = {
   getProblem,
   submitProblem,
+  runCode,
 };
 
 export default dashboardService;

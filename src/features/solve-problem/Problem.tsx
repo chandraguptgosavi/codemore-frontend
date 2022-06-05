@@ -40,7 +40,7 @@ const ProblemContainer = styled.div`
 
 function Problem() {
   const { _id } = useParams();
-  const { isProblemLoading, error, problem } = useReduxSelector(
+  const { isProblemLoading, problemError, problem } = useReduxSelector(
     (state) => state.solveProblem
   );
   const dispatch = useReduxDispatch();
@@ -75,7 +75,7 @@ function Problem() {
               </Typography>
               <Typography variant="h6">Sample Input:</Typography>
               <TextField
-                value={`${problem.sampleTestCases.count}\n${problem.sampleTestCases.input}`}
+                value={`${problem.sampleTestCases.count}\r\n${problem.sampleTestCases.input}`}
                 multiline
                 fullWidth
                 minRows={5}
@@ -98,9 +98,9 @@ function Problem() {
         </Fragment>
       )}
       <ToastMessage
-        show={error !== null}
+        show={problemError !== null}
         onClose={() => dispatch(resetProblem())}
-        message={error!!}
+        message={problemError!!}
       />
     </ProblemContainer>
   );
