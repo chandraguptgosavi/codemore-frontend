@@ -69,11 +69,7 @@ function EditorControls() {
 
   const handleRun = (_: React.MouseEvent<HTMLButtonElement>) => {
     if (problem !== null) {
-      dispatch(
-        runCode({
-          langID: languages[language.selectedIndex].id,
-        })
-      );
+      dispatch(runCode(languages[language.selectedIndex].id));
     }
   };
 
@@ -82,7 +78,7 @@ function EditorControls() {
       dispatch(
         submitProblem({
           _id,
-          langID: languages[language.selectedIndex].id,
+          language: languages[language.selectedIndex],
         })
       );
     }

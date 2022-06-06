@@ -12,7 +12,6 @@ import {
   SolveProblemState,
   JudgeResponse,
   SubmissionData,
-  RunCodeData,
 } from "./types";
 
 const initialState: SolveProblemState = {
@@ -50,7 +49,7 @@ export const submitProblem = createAsyncThunk<
   JudgeResponse,
   SubmissionData,
   { state: RootState }
->("solveProblem/submitProblem", async ({ _id, langID }, thunkAPI) => {
+>("solveProblem/submitProblem", async ({ _id, language }, thunkAPI) => {
   try {
     const rootState = thunkAPI.getState(),
       token = rootState.auth.user?.token!!,
@@ -60,9 +59,9 @@ export const submitProblem = createAsyncThunk<
       return await solveProblemService.submitProblem(
         _id,
         srcCode,
-        langID,
         problem.title,
-        token
+        token,
+        language
       );
     }
     return thunkAPI.rejectWithValue("Could not submit at the moment!");
@@ -74,9 +73,9 @@ export const submitProblem = createAsyncThunk<
 
 export const runCode = createAsyncThunk<
   JudgeResponse,
-  RunCodeData,
+  number,
   { state: RootState }
->("solveProblem/runCode", async ({ langID }, thunkAPI) => {
+>("solveProblem/runCode", async (langID, thunkAPI) => {
   try {
     const rootState = thunkAPI.getState(),
       token = rootState.auth.user?.token!!,

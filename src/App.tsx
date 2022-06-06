@@ -13,6 +13,7 @@ import SignUp from "pages/SignUp";
 import PrivateRoute from "router/PrivateRoute";
 import Home from "pages/Home";
 import SolveProblem from "pages/SolveProblem";
+import Submissions from "pages/Submissions";
 
 function App() {
   const user = useReduxSelector(selectUser);
@@ -58,8 +59,9 @@ function App() {
             <Route
               path={`${Paths.SUBMISSIONS}/:username`}
               element={
-                
-                  <>profile</>
+                <PrivateRoute>
+                  <Submissions />
+                </PrivateRoute>
               }
             />
           </Routes>

@@ -1,12 +1,20 @@
 import { Pagination } from "@mui/material";
 import useReduxDispatch from "hooks/useReduxDispatch";
 import useReduxSelector from "hooks/useReduxSelector";
-import { selectPage, selectPageSize, selectTotalProblems, setPage } from "./dashboardSlice";
+import { Fragment } from "react";
+import {
+  selectPage,
+  selectPageSize,
+  selectProblems,
+  selectTotalProblems,
+  setPage,
+} from "./dashboardSlice";
 
 function ProblemsPagination() {
   const size = useReduxSelector(selectPageSize);
   const page = useReduxSelector(selectPage);
   const totalProblems = useReduxSelector(selectTotalProblems);
+  const problems = useReduxSelector(selectProblems);
   const dispatch = useReduxDispatch();
   const pageCount =
     totalProblems % size === 0
@@ -18,15 +26,19 @@ function ProblemsPagination() {
   };
 
   return (
-      <Pagination
-        sx={{ display: "flex", justifyContent: "center" }}
-        count={pageCount}
-              page={page}
-              color="secondary"
-        variant="outlined"
-        shape="rounded"
-        onChange={handleChange}
-      />
+    <Fragment>
+      {problems && problems.length > 0 ? (
+        <Pagination
+          sx={{ display: "flex", justifyContent: "center" }}
+          count={pageCount}
+          page={page}
+          color="secondary"
+          variant="outlined"
+          shape="rounded"
+          onChange={handleChange}
+        />
+      ) : null}
+    </Fragment>
   );
 }
 

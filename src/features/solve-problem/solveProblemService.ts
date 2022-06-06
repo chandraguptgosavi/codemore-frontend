@@ -9,8 +9,6 @@ const getProblem = async (_id: string) => {
     const data = (await axios.get<Problem>(`${BASE_URL}/${_id}`)).data;
     return data;
   } catch (error: any) {
-    console.log(error);
-
     if (error.response && error.response.data && error.response.data.message) {
       throw new Error(error.response.data.message);
     }
@@ -21,9 +19,9 @@ const getProblem = async (_id: string) => {
 const submitProblem = async (
   _id: string,
   srcCode: string,
-  langID: number,
   problemTitle: string,
-  token: string
+  token: string,
+  language: { name: string; id: number }
 ) => {
   try {
     const config = {
@@ -34,10 +32,10 @@ const submitProblem = async (
     const data = (
       await axios.put<JudgeResponse>(
         `${BASE_URL}/${_id}/submit`,
-        { srcCode, langID, problemTitle },
+        { srcCode, problemTitle, language },
         config
       )
-    ).data;    
+    ).data;
     return data;
   } catch (error: any) {
     if (error.response && error.response.data && error.response.data.message) {
