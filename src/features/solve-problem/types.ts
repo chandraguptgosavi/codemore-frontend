@@ -21,7 +21,7 @@ export type SolveProblemState = {
 
 export type SubmissionData = {
   _id: string;
-  langID: number;
+  language: { name: string; id: number };
 };
 
 export type JudgeResponse = {
@@ -36,7 +36,3 @@ export type JudgeResponse = {
 };
 
 export type Language = { name: string; selectedIndex: number };
-
-export type RunCodeData = {
-  langID: number;
-};

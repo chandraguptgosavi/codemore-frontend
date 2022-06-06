@@ -10,7 +10,7 @@ import Color from "constants/colors";
 import Unit from "constants/units";
 import useReduxDispatch from "hooks/useReduxDispatch";
 import useReduxSelector from "hooks/useReduxSelector";
-import React, { useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Paths from "router/paths";
 import { getAllProblems, resetDashboardState } from "./dashboardSlice";
@@ -22,8 +22,8 @@ function ProblemsList() {
   const dispatch = useReduxDispatch();
   const navigate = useNavigate();
 
-  const onListItemClick =
-    (_id: string) => (event: React.MouseEvent<HTMLLIElement>) => {
+  const handleListItemClick =
+    (_id: string) => (event: React.MouseEvent<HTMLDivElement>) => {
       navigate(`${Paths.SOLVE}/${_id}`);
     };
 
@@ -38,23 +38,30 @@ function ProblemsList() {
           Loading...
         </Typography>
       ) : (
-        <List>
-          {problems.map((problem, index) => (
-            <ListItem
-              key={problem._id}
-              sx={{ bgcolor: index % 2 === 1 ? Color.LIGHT : undefined }}
-              disablePadding
-              onClick={onListItemClick(problem._id)}
-            >
-              <ListItemButton>
-                <ListItemText sx={{ flex: "none", width: Unit.rem.XXL }}>
-                  {`${(page - 1) * pageSize + (index + 1)}.`}
-                </ListItemText>
-                <ListItemText primary={problem.title} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
+        <Fragment>
+          {problems.length > 0 ? (
+            <List>
+              {problems.map((problem, index) => (
+                <ListItem
+                  key={problem._id}
+                  sx={{ bgcolor: index % 2 === 1 ? Color.LIGHT : undefined }}
+                  disablePadding
+                >
+                  <ListItemButton onClick={handleListItemClick(problem._id)}>
+                    <ListItemText sx={{ flex: "none", width: Unit.rem.XXL }}>
+                      {`${(page - 1) * pageSize + (index + 1)}.`}
+                    </ListItemText>
+                    <ListItemText primary={problem.title} />
+                  </ListItemButton>
+                </ListItem>
+              ))}
+            </List>
+          ) : (
+            <Typography variant="h6" align="center">
+              No problems available!
+            </Typography>
+          )}
+        </Fragment>
       )}
       <ToastMessage
         show={error !== null}
