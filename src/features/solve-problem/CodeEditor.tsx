@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import MonacoEditor from "@monaco-editor/react";
 
@@ -23,7 +22,7 @@ const StyledCodeEditorContainer = styled.div`
   box-sizing: border-box;
   background-color: ${Color.LIGHT};
 
-  @media (min-width: ${Screen.LG}) {
+  @media (min-width: ${Screen.MD}) {
     width: 65%;
     height: 100%;
     min-height: auto;

@@ -92,6 +92,16 @@ export const solveProblemSlice = createSlice({
   name: "solveProblem",
   initialState,
   reducers: {
+    resetSolveProblem: (state: SolveProblemState) => {
+      state.isSubmissionPending = false;
+      state.submissionError = null;
+      state.submissionResponse = null;
+      state.isCodeRunning = false;
+      state.runCodeError = null;
+      state.runCodeResponse = null;
+      state.openConsole = false;
+      state.consoleTabIndex = 0;
+    },
     resetProblem: (state: SolveProblemState) => {
       state.isProblemLoading = false;
       state.problemError = null;
@@ -196,6 +206,7 @@ export const solveProblemSlice = createSlice({
 });
 
 export const {
+  resetSolveProblem,
   resetProblem,
   resetSubmission,
   resetRunCode,

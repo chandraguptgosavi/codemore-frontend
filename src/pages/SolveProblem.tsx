@@ -4,7 +4,7 @@ import Problem from "features/solve-problem/Problem";
 
 function SolveProblem() {
   return (
-    <StyledPageContainer width="100%" lgFlexDirection="row">
+    <StyledPageContainer width="100%" mdFlexDirection="row">
       <Problem />
       <CodeEditor />
     </StyledPageContainer>
