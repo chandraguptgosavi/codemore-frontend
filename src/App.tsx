@@ -12,6 +12,7 @@ import SignIn from "pages/SignIn";
 import SignUp from "pages/SignUp";
 import PrivateRoute from "router/PrivateRoute";
 import { Typography } from "@mui/material";
+import NotFound from "pages/NotFound";
 const Home = lazy(() => import("pages/Home"));
 const SolveProblem = lazy(() => import("pages/SolveProblem"));
 const Submissions = lazy(() => import("pages/Submissions"));
@@ -101,6 +102,14 @@ function App() {
                   >
                     <Contribute />
                   </Suspense>
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="*"
+              element={
+                <PrivateRoute>
+                  <NotFound />
                 </PrivateRoute>
               }
             />

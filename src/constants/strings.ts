@@ -27,6 +27,8 @@ const CodemoreString = {
     "Test case output, will be used to judge user submission",
   fieldRequiredMessage: "This field is required",
   validNumberMessage: "Please enter valid number",
+  pageNotFoundHeading: "YOU'RE BEYOND THE BORDERS",
+  pageNotFoundMessage: "The page you are looking for is not available!",
 };
 
 export default CodemoreString;

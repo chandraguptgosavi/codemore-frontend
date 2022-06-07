@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Screen from "constants/screens";
 import Unit from "constants/units";
 
-const StyledAuthImage = styled.img`
+const StyledImage = styled.img`
   width: 100%;
   max-width: 100%;
   max-height: 300px;
@@ -14,4 +14,4 @@ const StyledAuthImage = styled.img`
   }
 `;
 
-export default StyledAuthImage;
+export default StyledImage;
