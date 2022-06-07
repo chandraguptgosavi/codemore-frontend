@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import AuthRoute from "router/AuthRoute";
@@ -11,10 +11,11 @@ import StyledMainContainer from "components/MainContainer.styles";
 import SignIn from "pages/SignIn";
 import SignUp from "pages/SignUp";
 import PrivateRoute from "router/PrivateRoute";
-import Home from "pages/Home";
-import SolveProblem from "pages/SolveProblem";
-import Submissions from "pages/Submissions";
-import Contribute from "pages/Contribute";
+import { Typography } from "@mui/material";
+const Home = lazy(() => import("pages/Home"));
+const SolveProblem = lazy(() => import("pages/SolveProblem"));
+const Submissions = lazy(() => import("pages/Submissions"));
+const Contribute = lazy(() => import("pages/Contribute"));
 
 function App() {
   const user = useReduxSelector(selectUser);
@@ -45,7 +46,15 @@ function App() {
               path={Paths.HOME}
               element={
                 <PrivateRoute>
-                  <Home />
+                  <Suspense
+                    fallback={
+                      <Typography variant="h6" marginTop={2}>
+                        Loading...
+                      </Typography>
+                    }
+                  >
+                    <Home />
+                  </Suspense>
                 </PrivateRoute>
               }
             />
@@ -53,19 +62,45 @@ function App() {
               path={`${Paths.SOLVE}/:_id`}
               element={
                 <PrivateRoute>
-                  <SolveProblem />
+                  <Suspense
+                    fallback={
+                      <Typography variant="h6" marginTop={2}>
+                        Loading...
+                      </Typography>
+                    }
+                  >
+                    <SolveProblem />
+                  </Suspense>
                 </PrivateRoute>
               }
             />
             <Route
               path={`${Paths.SUBMISSIONS}/:username`}
-              element={<Submissions />}
+              element={
+                <Suspense
+                  fallback={
+                    <Typography variant="h6" marginTop={2}>
+                      Loading...
+                    </Typography>
+                  }
+                >
+                  <Submissions />
+                </Suspense>
+              }
             />
             <Route
               path={Paths.CONTRIBUTE}
               element={
                 <PrivateRoute>
-                  <Contribute />
+                  <Suspense
+                    fallback={
+                      <Typography variant="h6" marginTop={2}>
+                        Loading...
+                      </Typography>
+                    }
+                  >
+                    <Contribute />
+                  </Suspense>
                 </PrivateRoute>
               }
             />
