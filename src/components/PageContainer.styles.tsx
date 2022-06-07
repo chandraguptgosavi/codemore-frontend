@@ -8,6 +8,7 @@ type StyledPageContainerProps = {
   maxWidth?: string;
   overflow?: string;
   smFlexDirection?: string;
+  mdFlexDirection?: string;
   lgFlexDirection?: string;
 };
 
@@ -23,6 +24,11 @@ const StyledPageContainer = styled.div<StyledPageContainerProps>`
     width: ${({ smWidth }) => smWidth && smWidth};
     flex-direction: ${({ smFlexDirection }) =>
       smFlexDirection && smFlexDirection};
+  }
+  
+  @media (min-width: ${Screen.MD}) {
+    flex-direction: ${({ mdFlexDirection }) =>
+      mdFlexDirection && mdFlexDirection};
   }
 
   @media (min-width: ${Screen.LG}) {

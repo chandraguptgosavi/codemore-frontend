@@ -50,7 +50,12 @@ function Navbar(props: NavbarProps) {
             <StyledLink to={Paths.HOME}>Problems</StyledLink>
           </StyledNavbarItem>
           <StyledNavbarItem show={show}>
-            <StyledLink to={`${Paths.SUBMISSIONS}/${user?.username}`}>My Submissions</StyledLink>
+            <StyledLink to={`${Paths.SUBMISSIONS}/${user?.username}`}>
+              My Submissions
+            </StyledLink>
+          </StyledNavbarItem>
+          <StyledNavbarItem show={show}>
+            <StyledLink to={Paths.CONTRIBUTE}>Contribute</StyledLink>
           </StyledNavbarItem>
           <StyledNavbarItem show={show}>
             <SignOutButton onClick={onSignOutClick}>Sign out</SignOutButton>

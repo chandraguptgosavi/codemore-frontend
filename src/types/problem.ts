@@ -5,7 +5,7 @@ type TestCase = {
 };
 
 type Problem = {
-  _id: string,
+  _id?: string,
   title: string;
   statement: string;
   input: string;
