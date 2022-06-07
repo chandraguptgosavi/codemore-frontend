@@ -15,6 +15,10 @@ const theme = createTheme({
       dark: Color.SECONDARY_DARK,
     },
   },
+
+  typography: {
+    fontFamily: "Montserrat, sans-serif",
+  },
 });
 
 export default theme;
