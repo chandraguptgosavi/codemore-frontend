@@ -1,7 +1,7 @@
 import axios from "axios";
 import { SubmissionResponse } from "./types";
 
-const BASE_URL = "http://localhost:5000/user/";
+const BASE_URL = "/api/user";
 
 const getSubmissions = async (username: string) => {
   try {

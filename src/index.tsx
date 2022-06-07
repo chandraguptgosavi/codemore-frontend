@@ -7,7 +7,6 @@ import {store} from 'redux/store';
 import GlobalStyle from 'styles/style';
 import { ThemeProvider } from '@mui/material';
 import theme from 'styles/theme';
-import "./index.css"
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement

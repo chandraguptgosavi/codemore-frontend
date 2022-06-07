@@ -1,7 +1,7 @@
 import axios from "axios";
 import { GetAllProblemsResponse } from "./types";
 
-const BASE_URL = "http://localhost:5000/problems";
+const BASE_URL = "/api/problems";
 
 const getAllProblems = async (page: number) => {
   try {

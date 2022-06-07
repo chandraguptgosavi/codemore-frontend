@@ -2,7 +2,7 @@ import axios from "axios";
 import {AuthData} from "./types";
 import User from "types/user";
 
-const BASE_URL = "http://localhost:5000/user";
+const BASE_URL = "/api/user";
 
 const signUp = async (authData: AuthData) => {
   try {

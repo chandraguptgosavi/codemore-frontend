@@ -2,7 +2,7 @@ import axios from "axios";
 
 import Problem from "types/problem";
 
-const BASE_URL = "http://localhost:5000/problems/";
+const BASE_URL = "/api/problems";
 
 const createProblem = async (problem: Problem, token: string) => {
   try {
