@@ -23,8 +23,8 @@ function ProblemsList() {
   const navigate = useNavigate();
 
   const handleListItemClick =
-    (_id: string) => (event: React.MouseEvent<HTMLDivElement>) => {
-      navigate(`${Paths.SOLVE}/${_id}`);
+    (_id: string | undefined) => (event: React.MouseEvent<HTMLDivElement>) => {
+      if(_id) navigate(`${Paths.SOLVE}/${_id}`);
     };
 
   useEffect(() => {

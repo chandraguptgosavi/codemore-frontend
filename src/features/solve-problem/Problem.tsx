@@ -18,7 +18,7 @@ const ProblemContainer = styled.div`
   box-sizing: border-box;
   text-align: justify;
 
-  @media (min-width: ${Screen.LG}) {
+  @media (min-width: ${Screen.MD}) {
     width: 35%;
     overflow: auto;
     scrollbar-width: auto;
@@ -59,7 +59,7 @@ function Problem() {
         <Fragment>
           {problem && (
             <Fragment>
-              <Typography variant="h4" gutterBottom>
+              <Typography variant="h5" color="secondary.dark" gutterBottom>
                 {problem.title}
               </Typography>
               <Typography paragraph gutterBottom>

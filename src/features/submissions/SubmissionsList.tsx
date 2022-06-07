@@ -16,6 +16,7 @@ import ToastMessage from "components/ToastMessage";
 import useReduxDispatch from "hooks/useReduxDispatch";
 import { getSubmissions, resetSubmissionsState } from "./submissionsSlice";
 import Paths from "router/paths";
+import Unit from "constants/units";
 
 const StyledFixedSizeList = styled(FixedSizeList)`
   scrollbar-width: none;
@@ -45,15 +46,25 @@ function Row(props: ListChildComponentProps) {
       <ListItemButton onClick={handleListItemClick(data[index].problemID)}>
         <ListItemText
           primary={data[index].problemTitle}
-          secondary={data[index].languageName}
+          secondary={data[index].status.description}
+          primaryTypographyProps={{
+            fontSize: Unit.rem.LG,
+          }}
+          secondaryTypographyProps={{
+            color: data[index].status.id === 3 ? "success.dark" : "error.dark",
+            fontSize: Unit.rem.MD,
+          }}
         />
         <ListItemText
-          primary={data[index].status.description}
+          secondary={data[index].languageName}
           sx={{
             flex: "none",
+            p: Unit.rem.XS,
+            border: "1px solid black",
+            borderRadius: Unit.rem.XS,
           }}
-          primaryTypographyProps={{
-            color: data[index].status.id === 3 ? "success.dark" : "error.dark",
+          secondaryTypographyProps={{
+            color: "secondary",
           }}
         />
       </ListItemButton>

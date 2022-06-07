@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import PublicRoute from "router/PublicRoute";
+import AuthRoute from "router/AuthRoute";
 import Paths from "router/paths";
 import Header from "components/header/Header";
 import useReduxSelector from "hooks/useReduxSelector";
@@ -14,6 +14,7 @@ import PrivateRoute from "router/PrivateRoute";
 import Home from "pages/Home";
 import SolveProblem from "pages/SolveProblem";
 import Submissions from "pages/Submissions";
+import Contribute from "pages/Contribute";
 
 function App() {
   const user = useReduxSelector(selectUser);
@@ -27,17 +28,17 @@ function App() {
             <Route
               path={Paths.SIGNUP}
               element={
-                <PublicRoute>
+                <AuthRoute>
                   <SignUp />
-                </PublicRoute>
+                </AuthRoute>
               }
             />
             <Route
               path={Paths.SIGNIN}
               element={
-                <PublicRoute>
+                <AuthRoute>
                   <SignIn />
-                </PublicRoute>
+                </AuthRoute>
               }
             />
             <Route
@@ -58,9 +59,13 @@ function App() {
             />
             <Route
               path={`${Paths.SUBMISSIONS}/:username`}
+              element={<Submissions />}
+            />
+            <Route
+              path={Paths.CONTRIBUTE}
               element={
                 <PrivateRoute>
-                  <Submissions />
+                  <Contribute />
                 </PrivateRoute>
               }
             />

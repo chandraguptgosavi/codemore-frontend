@@ -1,19 +1,16 @@
 import React, { Fragment, useEffect } from "react";
 import styled from "styled-components";
-import {
-  Box,
-  Skeleton,
-  Tab,
-  Tabs,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Skeleton, Tab, Tabs, TextField, Typography } from "@mui/material";
 
 import Color from "constants/colors";
 import Unit from "constants/units";
 import useReduxDispatch from "hooks/useReduxDispatch";
 import useReduxSelector from "hooks/useReduxSelector";
-import { setConsoleTabIndex, setUserInput } from "./solveProblemSlice";
+import {
+  resetSolveProblem,
+  setConsoleTabIndex,
+  setUserInput,
+} from "./solveProblemSlice";
 import { judgeOuptut } from "./utils";
 
 type StyledConsoleProps = {
@@ -109,12 +106,13 @@ function Console() {
   };
 
   useEffect(() => {
-    if (!userInput && problem !== null)
+    if (problem !== null)
       dispatch(
         setUserInput(
           `${problem.sampleTestCases.count}\r\n${problem.sampleTestCases.input}`
         )
       );
+    dispatch(resetSolveProblem())
   }, [problem]);
 
   return (

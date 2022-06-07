@@ -3,7 +3,8 @@ const Paths = {
   SIGNUP: "/signup",
   SIGNIN: "/signin",
   SUBMISSIONS: "/submissions",
-  SOLVE: "/solve"
+  SOLVE: "/solve",
+  CONTRIBUTE: "/contribute"
 };
 
 export default Paths;
